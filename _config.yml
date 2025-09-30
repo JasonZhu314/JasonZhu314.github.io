@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
-title                    : "Jason Zhu"
+title                    : "Jitong Zhu"
 title_separator          : "-"
-name                     : &name "Jason Zhu"
-description              : &description "Jason Zhu's academic homepage"
+name                     : &name "Jitong Zhu"
+description              : &description "Jitong Zhu's academic homepage"
 url                      : https://jasonzhu314.github.io
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -24,13 +24,13 @@ repository               : "JasonZhu314/JasonZhu314.github.io"
 author:
   # Biographic information
   avatar           : "profile.png"
-  name             : "Jason Zhu"
-  pronouns         : # example: "she/her"  
+  name             : "Jitong Zhu"
+  pronouns         : "he/him"  
   bio              : "Add a short biography for the sidebar"
-  location         : ""
+  location         : "Beijing, China"
   employer         : ""
   uri              : # URL
-  email            : ""
+  email            : "zhujitong.cn@gmail.com"
 
   # Academic websites
   academia         : # URL
@@ -40,7 +40,6 @@ author:
   impactstory      : # URL
   orcid            : ""
   semantic         : # URL
-  pubmed           : ""
   researchgate     : # URL
   scopus           : # URL
 
@@ -53,8 +52,6 @@ author:
   stackoverflow    : # User number or user number and name (i.e., use "1" or "1/jeff-atwood")    
 
   # Social media
-  artstation       : # Username
-  bluesky          : ""
   facebook         : # Username
   flickr           : # Username
   foursquare       : # Username
@@ -66,16 +63,11 @@ author:
   linkedin         : # Username
   mastodon         : # URL
   medium           : # URL
-  pinterest        : # Username
   soundcloud       : # Username
   steam            : # Username
-  telegram         : # URL
-  tumblr           : # Username
   twitter          : # Username for X / Twitter
-  vine             : # Username
   weibo            : # Username
   wikipedia        : # Username
-  xing             : # Username
   youtube          : # Username
   zhihu            : # Username
 
@@ -230,6 +222,9 @@ collections:
   talks:
     output: true
     permalink: /:collection/:path/
+  blog:
+    output: true
+    permalink: /:collection/:path/
 
 
 # These settings control how pages and collections are included in the site
@@ -287,6 +282,17 @@ defaults:
       layout: talk
       author_profile: true
       share: true
+  # _blog
+  - scope:
+      path: ""
+      type: blog
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      comments: true
+      share: true
+      related: true
 
 
 # Sass/SCSS
@@ -299,7 +305,7 @@ sass:
 permalink: /:categories/:title/
 # paginate: 5 # amount of posts to show
 # paginate_path: /page:num/
-timezone: Etc/UTC # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+timezone: Asia/Shanghai # http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 
 
 # Plugins

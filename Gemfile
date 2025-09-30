@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem "tzinfo", "~> 2.0"
+gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
 group :jekyll_plugins do
   gem 'jekyll'
   gem 'jekyll-feed'
