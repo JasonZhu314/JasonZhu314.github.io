@@ -1,17 +1,25 @@
 ---
 layout: single
-title: "Home"
+title: "Hi there, I'm Jitong Zhu 👋"
 author_profile: true
 ---
 
-Welcome to my academic homepage. Use this space to briefly explain what you are working on right now and what visitors will find on the site.
+## About Me
 
-## Quick Links
+I am a sophomore at the School of Mathematical Sciences, Peking University, passionate about Mathematics and Deep Learning.
 
-- [Download CV](/files/cv.pdf) (replace with your actual file or remove this link)
-- [Recent publications](/publications/)
-- [Latest news](/year-archive/)
+At present, my research interests lie in the deep integration of computational mathematics and AI, specifically
+in scientific machine learning, optimization for deep learning, and reinforcement learning. I aim to develop
+stable and efficient algorithms that leverage computational mathematics to advance deep learning models,
+and to apply methods from AI to tackle challenging problems in computational mathematics, thereby promoting scientific
+progress.
 
-## Spotlight
+I am also involved in AI for Mathematics (AI4M) and have a vision of using AI to assist mathematicians in their research, such as automating the translation process from natural language to formal language such as Lean4 and the generation of new conjectures or proofs. I believe that AI and Mathematics have a bidirectional relationship, where AI can aid in mathematical research, and mathematical principles can enhance AI models, thereby fostering mutual development.
 
-Add a short paragraph, image, or call-to-action that highlights a current project, a paper you are promoting, or upcoming travel. You can embed images by placing them in the `images/` folder and referencing them with standard Markdown.
+## Posts
+
+To be added...
+
+## Projects
+
+Under construction...
