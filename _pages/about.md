@@ -8,7 +8,7 @@ redirect_from:
 
 ## Introduction
 
-Hello there! I'm Jitong (Jason) Zhu, a sophomore at the School of Mathematical Sciences, Peking University. I have a strong passion for Mathematics and Deep Learning.
+Hello there! I'm Jason Zhu, a sophomore at the School of Mathematical Sciences, Peking University. I have a strong passion for Mathematics and Deep Learning.
 
 ## Research Interests
 
@@ -35,6 +35,6 @@ In addition, although I have not participated in informatics olympiad during my 
 
 ## Contact
 
-- Email: [zhujitong.cn@gmail.com](mailto:zhujitong.cn@gmail.com)
-- WeChat: [sms_jason](https://jasonzhu314.github.io/images/wechat_qr.jpg)
+- Email: [jasonzjt.ai@gmail.com](mailto:jasonzjt.ai@gmail.com)
+<!-- - WeChat: [sms_jason](https://jasonzhu314.github.io/images/wechat_qr.jpg) -->
 - GitHub: [github.com/JasonZhu314](https://github.com/JasonZhu314)

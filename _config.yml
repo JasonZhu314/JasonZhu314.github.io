@@ -9,10 +9,10 @@
 # Basic Site Settings
 locale                   : "en-US"
 site_theme               : "default" # Currently available options are "default", "air"
-title                    : "Jitong Zhu"
+title                    : "Jason Zhu"
 title_separator          : "-"
-name                     : &name "Jitong Zhu"
-description              : &description "Jitong Zhu's academic homepage"
+name                     : &name "Jason Zhu"
+description              : &description "Jason Zhu's academic homepage"
 url                      : https://jasonzhu314.github.io
                                                            # or if you already have some other page hosted on Github then use "https://[your GitHub username].github.io/[Your Repo Name]"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -24,13 +24,13 @@ repository               : "JasonZhu314/JasonZhu314.github.io"
 author:
   # Biographic information
   avatar           : "profile.jpg"
-  name             : "Jitong Zhu"
+  name             : "Jason Zhu"
   # pronouns         : "he/him"  
   bio              : "Sophomore at School of Mathematical Sciences, Peking University, passionate about Mathematics and AI."
   location         : "Beijing, China"
   # employer         : "Peking University"
   uri              : # URL
-  email            : "zhujitong.cn@gmail.com"
+  email            : "jasonzjt.ai@gmail.com"
 
   # Academic websites
   academia         : # URL
