@@ -24,7 +24,7 @@ I am also involved in **AI for Mathematics** (AI4M) and have a vision of using A
 
 I enjoy reading, biking, and swimming in my free time. Sometimes I go on a ride with my friends during the weekends. I joined the school's swimming team this semester, and have participated in competitions in our school.
 
-I was quite into mathematics competitions during my high school years, and was honored to win a gold medal in the Chinese Mathematical Olympiad (CMO). Now, long after my retirement from competitions, I still have fun in solving challenging mathematics problems just for fun.
+I was quite into mathematics competitions during my high school years, and was honored to win a gold medal in the Chinese Mathematical Olympiad (CMO). Now, long after my retirement from competitions, I still have fun in solving challenging mathematics problems.
 
 In addition, although I have not participated in informatics olympiad during my high school years, I learned competitive programming as a hobby and attended Codeforces contests.
 
