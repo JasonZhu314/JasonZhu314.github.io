@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "Hi there, I'm Jitong Zhu 👋"
+title: "Hi there, I'm Jitong (Jason) Zhu 👋"
 author_profile: true
 ---
 

@@ -1,31 +1,40 @@
 ---
 permalink: /about/
-title: "About"
+title: "About Me"
 author_profile: true
 redirect_from:
   - /about.html
 ---
 
-Welcome! I am currently updating this page with my research, teaching, and outreach work. Replace this paragraph with a short introduction (1-2 sentences) that highlights your current position, institution, and broad interests.
+## Introduction
+
+Hello there! I'm Jitong (Jason) Zhu, a sophomore at the School of Mathematical Sciences, Peking University. I have a strong passion for Mathematics and Deep Learning.
 
 ## Research Interests
 
-- Add 2-4 bullet points that describe the topics or problems you study
+At present, my research interests lie in the deep integration of **computational mathematics and AI**, specifically
+in **scientific machine learning**, **optimization for deep learning**, and **reinforcement learning**. I aim to develop
+stable and efficient algorithms that leverage computational mathematics to advance deep learning models,
+and to apply methods from AI to tackle challenging problems in computational mathematics, thereby promoting scientific
+progress.
+
+I am also involved in **AI for Mathematics** (AI4M) and have a vision of using AI to assist mathematicians in their research, such as automating the translation process from natural language to formal language such as Lean4 and the generation of new conjectures or proofs. I believe that AI and Mathematics have a bidirectional relationship, where AI can aid in mathematical research, and mathematical principles can enhance AI models, thereby fostering mutual development.
+
+## Hobbies
+
+I enjoy reading, biking, and swimming in my free time. Sometimes I go on a ride with my friends during the weekends. I joined the school's swimming team this semester, and have participated in competitions in our school.
+
+I was quite into mathematics competitions during my high school years, and was honored to win a gold medal in the Chinese Mathematical Olympiad (CMO). Now, long after my retirement from competitions, I still have fun in solving challenging mathematics problems just for fun.
+
+In addition, although I have not participated in informatics olympiad during my high school years, I learned competitive programming as a hobby and attended Codeforces contests.
 
 ## Education
 
-- Year-Year - Degree, Department, Institution  
-- Year-Year - Degree, Department, Institution
-
-## News
-
-- Month Year - Share a recent publication, talk, or milestone  
-- Month Year - Add another noteworthy update
-
-## Selected Publications
-
-List 1-3 key papers here or delete this section. You can also rely on the dedicated [publications page](/publications/) for the full list.
+- 2024~2028 - B.S. in Mathematics, School of Mathematical Sciences, Peking University  
+- 2022~2024 - High School Diploma, Shenzhen Middle School
 
 ## Contact
 
-Email is configured in `_config.yml`. Add office location, preferred contact method, or leave this section out if not needed.
+- Email: [zhujitong.cn@gmail.com](mailto:zhujitong.cn@gmail.com)
+- WeChat: [sms_jason](https://jasonzhu314.github.io/images/wechat_qr.jpg)
+- GitHub: [github.com/JasonZhu314](https://github.com/JasonZhu314)
