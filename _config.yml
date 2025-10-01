@@ -23,7 +23,7 @@ repository               : "JasonZhu314/JasonZhu314.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Jitong Zhu"
   # pronouns         : "he/him"  
   bio              : "Sophomore at School of Mathematical Sciences, Peking University, passionate about Mathematics and AI."
