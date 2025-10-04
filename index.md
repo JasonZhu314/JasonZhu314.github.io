@@ -31,54 +31,18 @@ feature_row:
     excerpt: "Nothing of substance here."
 ---
 
-# About Me
-
-I’m a sophomore at the School of Mathematical Sciences, Peking University, working at the intersection of **computational mathematics** and **artificial intelligence**. My current interests include **scientific machine learning**, **optimization for deep learning**, **reinforcement learning**. I aim to develop
-stable and efficient algorithms that leverage computational mathematics to advance deep learning models,
-and to apply methods from AI to tackle challenging problems in computational mathematics, thereby promoting scientific
-progress.
-
-I am also involved in **AI for Mathematics** (AI4M) and have a vision of using AI to assist mathematicians in their research, such as automating the translation process from natural language to formal language such as Lean4 and the generation of new conjectures or proofs. I believe that AI and Mathematics have a bidirectional relationship, where AI can aid in mathematical research, and mathematical principles can enhance AI models, thereby fostering mutual development.
+<div class="intro-panel">
+  <div class="intro-panel__image">
+    <img src="{{ '/images/profile.jpg' | relative_url }}" alt="Jason Zhu headshot">
+  </div>
+  <div class="intro-panel__content">
+    <h2>About Me</h2>
+    <p>I’m a sophomore at the School of Mathematical Sciences, Peking University, working at the intersection of <strong>computational mathematics</strong> and <strong>artificial intelligence</strong>. My current interests include <strong>scientific machine learning</strong>, <strong>optimization for deep learning</strong>, and <strong>reinforcement learning</strong>.</p>
+    <p>I aim to design stable, efficient algorithms that draw on mathematical structure to advance deep learning models, and to apply AI techniques to tough problems in computational mathematics.</p>
+    <p>I’m also excited about <strong>AI for Mathematics</strong> (AI4M): tooling that helps mathematicians translate ideas into formal languages like Lean4, generate conjectures, and explore proofs with AI assistance.</p>
+  </div>
+</div>
 
 {% include feature_row %}
 
-<!-- {% assign recent_posts = site.posts | slice: 0, 3 %} -->
-<!-- {% if recent_posts and recent_posts.size > 0 %} -->
-
-<!-- ## Latest Posts
-
-{% for post in recent_posts %}
-{% include archive-single.html type="list" %}
-{% endfor %}
-
-<p><a class="btn btn--inverse" href="/year-archive/">Browse all posts →</a></p>
-{% endif %}
-
-{% if site.publications and site.publications.size > 0 %}
-{% assign recent_pubs = site.publications | sort: "date" | reverse | slice: 0, 3 %}
-## Recent Publications
-
-{% for post in recent_pubs %}
-{% include archive-single.html type="list" %}
-{% endfor %}
-
-<p><a class="btn btn--inverse" href="/publications/">See full publication list →</a></p>
-{% endif %}
-
-{% if site.portfolio and site.portfolio.size > 0 %}
-{% assign featured_projects = site.portfolio | sort: "date" | reverse | slice: 0, 6 %}
-## Featured Projects
-
-<div class="grid__wrapper">
-{% for post in featured_projects %}
-{% include archive-single.html type="grid" %}
-{% endfor %}
-</div>
-
-<p><a class="btn btn--inverse" href="/portfolio/">All projects →</a></p>
-{% endif %}
-
-{% if site.data.navigation.main %} -->
-
 Looking for something specific? Check the navigation bar above!
-{% endif %}

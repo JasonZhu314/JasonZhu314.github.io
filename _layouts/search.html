@@ -1,0 +1,137 @@
+---
+layout: default
+---
+
+{% include base_path %}
+<article class="page" itemscope itemtype="http://schema.org/SearchResultsPage">
+  <header class="page__header">
+    <h1 class="page__title" itemprop="headline">{{ page.title | escape }}</h1>
+  </header>
+
+  <section class="page__content" itemprop="mainContentOfPage">
+    <form id="site-search" class="search-page__form" role="search" method="get" action="{{ base_path }}/search/">
+      <label class="screen-reader-text" for="search-query">{{ site.data.ui-text[site.locale].search_label | default: "Search" }}</label>
+      <div class="search-page__controls">
+        <input id="search-query" type="search" name="q" placeholder="{{ site.data.ui-text[site.locale].search_placeholder | default: "Search..." }}" aria-label="{{ site.data.ui-text[site.locale].search_label | default: "Search" }}">
+        <button type="submit" class="btn btn--primary">{{ site.data.ui-text[site.locale].search_button | default: "Search" }}</button>
+      </div>
+    </form>
+    <p class="search-page__status" data-search-status>{{ site.data.ui-text[site.locale].search_intro | default: "Start typing to explore the site." }}</p>
+    <div id="search-results" class="search-page__results" aria-live="polite"></div>
+  </section>
+</article>
+
+<script>
+(function() {
+  var entries = [
+    {% for post in site.posts %}
+    {
+      title: {{ post.title | jsonify }},
+      url: {{ post.url | relative_url | jsonify }},
+      type: "Post",
+      date: "{{ post.date | date: '%Y-%m-%d' }}",
+      description: {{ post.excerpt | strip_html | strip_newlines | jsonify }}
+    },
+    {% endfor %}
+    {% for item in site.portfolio %}
+    {
+      title: {{ item.title | jsonify }},
+      url: {{ item.url | relative_url | jsonify }},
+      type: "Project",
+      date: "{{ item.date | date: '%Y-%m-%d' }}",
+      description: {{ item.excerpt | strip_html | strip_newlines | jsonify }}
+    },
+    {% endfor %}
+    {% for item in site.publications %}
+    {
+      title: {{ item.title | jsonify }},
+      url: {{ item.url | relative_url | jsonify }},
+      type: "Publication",
+      date: "{{ item.date | date: '%Y-%m-%d' }}",
+      description: {{ item.excerpt | strip_html | strip_newlines | jsonify }}
+    },
+    {% endfor %}
+    {% for page in site.pages %}
+      {% if page.search_exclude != true and page.title and page.url != page.baseurl and page.url != '/search/' and page.url != '/404.html' %}
+    {
+      title: {{ page.title | jsonify }},
+      url: {{ page.url | relative_url | jsonify }},
+      type: "Page",
+      date: "",
+      description: {{ page.excerpt | default: page.content | strip_html | strip_newlines | jsonify }}
+    },
+      {% endif %}
+    {% endfor %}
+  ];
+
+  function getQuery() {
+    var params = new URLSearchParams(window.location.search);
+    return params.get('q') || '';
+  }
+
+  function filterEntries(query) {
+    if (!query) { return []; }
+    var q = query.trim().toLowerCase();
+    if (!q) { return []; }
+    var tokens = q.split(/\s+/);
+    return entries.filter(function(entry) {
+      if (!entry.title) { return false; }
+      var haystack = (entry.title + ' ' + (entry.description || '')).toLowerCase();
+      return tokens.every(function(token) { return haystack.indexOf(token) !== -1; });
+    });
+  }
+
+  function renderResults(results, query) {
+    var container = document.getElementById('search-results');
+    var status = document.querySelector('[data-search-status]');
+    container.innerHTML = '';
+    if (!query) {
+      status.textContent = {{ site.data.ui-text[site.locale].search_intro | default: "Start typing to explore the site." | jsonify }};
+      return;
+    }
+    if (results.length === 0) {
+      status.textContent = 'No results found for "' + query + '".';
+      return;
+    }
+    status.textContent = results.length + ' result' + (results.length === 1 ? '' : 's') + ' for "' + query + '"';
+    var list = document.createElement('div');
+    results.forEach(function(result) {
+      var item = document.createElement('article');
+      item.className = 'search-result';
+      var header = document.createElement('h3');
+      header.className = 'search-result__title';
+      var link = document.createElement('a');
+      link.href = result.url;
+      link.textContent = result.title;
+      header.appendChild(link);
+      item.appendChild(header);
+      if (result.type) {
+        var meta = document.createElement('p');
+        meta.className = 'search-result__meta';
+        var typeText = result.type;
+        if (result.date) { typeText += ' · ' + result.date; }
+        meta.textContent = typeText;
+        item.appendChild(meta);
+      }
+      if (result.description) {
+        var excerpt = document.createElement('p');
+        excerpt.className = 'search-result__excerpt';
+        excerpt.textContent = result.description;
+        item.appendChild(excerpt);
+      }
+      list.appendChild(item);
+    });
+    container.appendChild(list);
+  }
+
+  var queryInput = document.getElementById('search-query');
+  var initialQuery = getQuery();
+  if (queryInput) {
+    queryInput.value = initialQuery;
+    renderResults(filterEntries(initialQuery), initialQuery);
+    queryInput.addEventListener('input', function(event) {
+      renderResults(filterEntries(event.target.value), event.target.value);
+    });
+  }
+})();
+</script>
