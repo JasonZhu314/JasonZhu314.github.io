@@ -15,6 +15,16 @@
             {% endif %}
             <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
           {% endfor %}
+          {% if site.search %}
+          <li class="masthead__menu-item masthead__menu-item--search tail">
+            <form class="search-form" role="search" method="get" action="{{ base_path }}/search/">
+              <label class="screen-reader-text" for="nav-search">{{ site.data.ui-text[site.locale].search_label | default: 'Search' }}</label>
+              <input id="nav-search" type="search" name="q" placeholder="{{ site.data.ui-text[site.locale].search_placeholder | default: 'Search...' }}" aria-label="{{ site.data.ui-text[site.locale].search_label | default: 'Search' }}">
+              <button type="submit" class="search-form__submit" aria-label="{{ site.data.ui-text[site.locale].search_button | default: 'Submit search' }}"><i class="fa-solid fa-search" aria-hidden="true"></i></button>
+            </form>
+          </li>
+          {% endif %}
+
           <li id="theme-toggle" class="masthead__menu-item persist tail">
             <a role="button" aria-labelledby="theme-icon"><i id="theme-icon" class="fa-solid fa-sun" aria-hidden="true" title="toggle theme"></i></a>
           </li>

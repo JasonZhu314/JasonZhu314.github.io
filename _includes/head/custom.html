@@ -14,4 +14,105 @@
 <link rel="icon" href="/images/favicon.ico"/>
 <meta name="theme-color" content="#ffffff"/>
 
+
+{% if site.thebe.enabled %}
+<link rel="stylesheet" href="https://unpkg.com/thebe@0.8.2/lib/index.css">
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var selector = '{{ site.thebe.selector | default:"pre code.language-python" }}';
+    var nodes = document.querySelectorAll(selector);
+    nodes.forEach(function (codeEl) {
+      var pre = codeEl.closest('pre');
+      if (!pre) {
+        return;
+      }
+      pre.classList.add('thebe');
+      pre.dataset.executable = 'true';
+      if (!codeEl.dataset.language) {
+        var langClass = Array.from(codeEl.classList || []).find(function (cls) {
+          return cls.indexOf('language-') === 0;
+        });
+        if (langClass) {
+          codeEl.dataset.language = langClass.replace('language-', '');
+        }
+      }
+    });
+  });
+</script>
+<script type="text/x-thebe-config">
+{
+  "binderOptions": {
+    "repo": "{{ site.thebe.binder_repo }}",
+    "ref": "{{ site.thebe.binder_ref | default:"main" }}",
+    "binderUrl": "{{ site.thebe.binder_url | default:"https://mybinder.org" }}"
+  },
+  "kernelOptions": {
+    "name": "{{ site.thebe.kernel_name | default:"python3" }}"
+  },
+  "mathjaxUrl": "{{ site.thebe.mathjax_url | default:"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" }}",
+  "selector": ".thebe"
+}
+</script>
+<script async src="https://unpkg.com/thebe@0.8.2/lib/index.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var bootstrap = function () {
+      if (window.thebe && window.thebe.bootstrap) {
+        window.thebe.bootstrap();
+      }
+    };
+    if (window.thebe && window.thebe.bootstrap) {
+      bootstrap();
+    } else {
+      document.addEventListener('thebe-status', function (event) {
+        if (event.detail && event.detail.status === 'ready') {
+          bootstrap();
+        }
+      }, { once: true });
+    }
+  });
+</script>
+{% endif %}
+
+
+{% if site.search %}
+<style>
+  .masthead__menu-item--search {
+    display: inline-flex;
+    align-items: center;
+  }
+  .masthead__menu-item--search .search-form {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .masthead__menu-item--search input[type="search"] {
+    padding: 0.35rem 0.75rem;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.85);
+    color: inherit;
+    min-width: 10rem;
+  }
+  .masthead__menu-item--search .search-form__submit {
+    background: none;
+    border: none;
+    padding: 0.25rem;
+    color: inherit;
+    cursor: pointer;
+  }
+  .masthead__menu-item--search .search-form__submit:focus,
+  .masthead__menu-item--search input[type="search"]:focus {
+    outline: 2px solid rgba(55, 125, 255, 0.45);
+    outline-offset: 2px;
+  }
+  @media (prefers-color-scheme: dark) {
+    .masthead__menu-item--search input[type="search"] {
+      background: rgba(0, 0, 0, 0.35);
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+  }
+</style>
+{% endif %}
+
 <!-- end custom head snippets -->

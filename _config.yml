@@ -26,7 +26,7 @@ author:
   avatar           : "profile.jpg"
   name             : "Jason Zhu"
   # pronouns         : "he/him"  
-  bio              : "Sophomore at School of Mathematical Sciences, Peking University, passionate about Mathematics and AI."
+  bio              : "Maths and AI enthusiast."
   location         : "Beijing, China"
   # employer         : "Peking University"
   uri              : # URL
@@ -76,11 +76,12 @@ breadcrumbs              : false # true, false (default)
 words_per_minute         : 160
 future                   : true
 read_more                : "disabled" # if enabled, adds "Read more" links to excerpts
+search                   : true
 talkmap_link             : false      #change to true to add link to talkmap on talks page
 comments:
-  provider               : # false (default), "disqus", "discourse", "facebook", "google-plus", "staticman", "custom"
+  provider               : disqus
   disqus:
-    shortname            :
+    shortname            : jasonzhu
   discourse:
     server               : # https://meta.discourse.org/t/embedding-discourse-comments-via-javascript/31963 , e.g.: meta.discourse.org
   facebook:
@@ -103,6 +104,17 @@ staticman:
       type               : "date"
       options:
         format           : "iso8601" # "iso8601" (default), "timestamp-seconds", "timestamp-milliseconds"
+
+# Interactive code cells
+thebe:
+  enabled: true
+  binder_repo: JasonZhu314/JasonZhu314.github.io
+  binder_ref: main
+  binder_url: https://mybinder.org
+  kernel_name: python3
+  selector: "pre code.language-python"
+  mathjax_url: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 atom_feed:
   hide                   : false     # change to true to hide the RSS feed in the footer
   path                   : # blank (default) uses feed.xml
