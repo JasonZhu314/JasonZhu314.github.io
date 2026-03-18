@@ -1,0 +1,25 @@
+# Dependencies — installed via `npm install`, never committed
+node_modules/
+
+# Next.js build output
+.next/
+out/
+
+# Environment variables (may contain secrets — never commit)
+.env
+.env.local
+.env.production.local
+
+# OS-generated files
+.DS_Store
+Thumbs.db
+
+# TypeScript build info
+*.tsbuildinfo
+next-env.d.ts
+
+# Debug logs
+npm-debug.log*
+
+# Claude Code local config
+.claude/
