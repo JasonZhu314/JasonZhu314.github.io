@@ -1,0 +1,91 @@
+/**
+ * Global Stylesheet
+ *
+ * The three @tailwind directives inject Tailwind's CSS layers:
+ * - base:       Normalized defaults (font sizes, margins, etc.)
+ * - components: Reusable component classes (like .prose from typography plugin)
+ * - utilities:  All the utility classes (bg-white, text-sm, flex, etc.)
+ *
+ * The @layer base block below overrides Tailwind's defaults with our
+ * site-specific base styles (background color, text color, etc.).
+ */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base styles ──────────────────────────────────────────────────────────── */
+@layer base {
+  /* Default body colors for light and dark mode */
+  body {
+    @apply bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100;
+  }
+
+  /*
+   * Smooth scrolling for in-page anchor links.
+   * scroll-padding-top accounts for the sticky header height.
+   */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+}
+
+/* ── Custom prose overrides for blog posts ─────────────────────────────── */
+@layer components {
+  /*
+   * The `.prose` class from @tailwindcss/typography auto-styles rendered
+   * markdown. These overrides tweak it to match our minimalist aesthetic.
+   */
+  .prose {
+    --tw-prose-body: theme(colors.gray.700);
+    --tw-prose-headings: theme(colors.gray.900);
+    --tw-prose-links: theme(colors.gray.900);
+    --tw-prose-code: theme(colors.gray.900);
+    --tw-prose-pre-bg: theme(colors.gray.50);
+  }
+
+  .dark .prose {
+    --tw-prose-body: theme(colors.gray.300);
+    --tw-prose-headings: theme(colors.gray.100);
+    --tw-prose-links: theme(colors.gray.100);
+    --tw-prose-code: theme(colors.gray.100);
+    --tw-prose-pre-bg: theme(colors.gray.900);
+  }
+}
+
+/* ── Code block styling (from rehype-pretty-code) ─────────────────────── */
+/*
+ * rehype-pretty-code generates <pre> and <code> elements with data attributes.
+ * These styles give them a clean, bordered look.
+ */
+pre > code {
+  display: grid;
+}
+
+pre {
+  @apply rounded-lg border border-gray-200 dark:border-gray-800 overflow-x-auto py-4;
+}
+
+pre [data-line] {
+  @apply px-4;
+}
+
+/* Line highlighting (when you mark specific lines in a code block) */
+pre [data-highlighted-line] {
+  @apply bg-gray-100 dark:bg-gray-800 border-l-2 border-gray-500;
+}
+
+/* Inline code (single backtick `like this`) */
+:not(pre) > code {
+  @apply rounded bg-gray-100 dark:bg-gray-800 px-1.5 py-0.5 text-sm font-mono;
+}
+
+/* ── KaTeX overrides ──────────────────────────────────────────────────── */
+/*
+ * Make KaTeX equations inherit the page's text color so they
+ * look correct in both light and dark mode.
+ */
+.katex {
+  color: inherit;
+}
