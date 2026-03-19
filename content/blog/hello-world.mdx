@@ -1,0 +1,72 @@
+---
+title: "Hello World: Building This Site"
+date: "2025-03-18"
+tags: ["Meta", "Web Dev"]
+description: "A brief introduction to this site and how it was built — Next.js, MDX, and static export to GitHub Pages."
+---
+
+Welcome to my personal site. This is the first post, and it doubles as a tour of the technical stack behind it.
+
+## The Stack
+
+This site is built with:
+
+- **Next.js** (App Router) — a React framework for building fast, modern websites
+- **TypeScript** — typed JavaScript that catches bugs before runtime
+- **Tailwind CSS** — utility-first CSS for rapid styling
+- **MDX** — Markdown with embedded React components
+- **KaTeX** — LaTeX math rendering
+- **Shiki** — syntax highlighting for code blocks
+
+Everything is statically exported and deployed on **GitHub Pages** — no server required.
+
+## Markdown Features
+
+### Code Blocks
+
+Here's a Python snippet with syntax highlighting:
+
+```python
+import numpy as np
+
+def solve_ode(f, y0, t_span, dt=0.01):
+    """Simple Euler method for ODE integration."""
+    t = np.arange(t_span[0], t_span[1], dt)
+    y = np.zeros((len(t), len(y0)))
+    y[0] = y0
+    for i in range(1, len(t)):
+        y[i] = y[i-1] + dt * f(t[i-1], y[i-1])
+    return t, y
+```
+
+### Inline Math
+
+Einstein's mass-energy equivalence: $E = mc^2$.
+
+The Euler identity: $e^{i\pi} + 1 = 0$.
+
+### Block Math
+
+The Navier-Stokes equations for incompressible flow:
+
+$$
+\frac{\partial \mathbf{u}}{\partial t} + (\mathbf{u} \cdot \nabla)\mathbf{u} = -\frac{1}{\rho}\nabla p + \nu \nabla^2 \mathbf{u} + \mathbf{f}
+$$
+
+$$
+\nabla \cdot \mathbf{u} = 0
+$$
+
+### Lists and Formatting
+
+Some things I'm excited to write about:
+
+1. **Neural operators** — learning PDE solution mappings
+2. **Diffusion models** — generative approaches to scientific computing
+3. **Mathematical foundations** — approximation theory, spectral methods
+
+> "The purpose of computing is insight, not numbers." — Richard Hamming
+
+## What's Next
+
+I'll be posting technical deep-dives on my research, notes on interesting papers, and occasional personal reflections. Stay tuned.

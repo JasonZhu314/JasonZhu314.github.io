@@ -1,0 +1,97 @@
+---
+title: "A Gentle Introduction to Fourier Neural Operators"
+date: "2025-03-15"
+tags: ["AI", "Math", "Scientific Computing"]
+description: "An accessible overview of the Fourier Neural Operator (FNO) — how spectral methods meet deep learning for solving PDEs."
+---
+
+The **Fourier Neural Operator** (FNO), introduced by Li et al. (2020), is a neural network architecture designed to learn mappings between infinite-dimensional function spaces. It's particularly effective for solving parametric partial differential equations (PDEs).
+
+## Why Neural Operators?
+
+Traditional PDE solvers (finite elements, finite differences, spectral methods) are powerful but computationally expensive — you must re-solve the entire system for each new set of parameters. Neural operators learn the **solution operator** $\mathcal{G}^\dagger$:
+
+$$
+\mathcal{G}^\dagger : \mathcal{A} \to \mathcal{U}
+$$
+
+where $\mathcal{A}$ is the space of input functions (e.g., initial conditions, forcing terms) and $\mathcal{U}$ is the space of solutions.
+
+Once trained, inference is nearly instant — orders of magnitude faster than classical solvers.
+
+## The Fourier Layer
+
+The key innovation is the **Fourier layer**, which operates in the frequency domain. Given an input function $v(x)$, the Fourier layer computes:
+
+$$
+(\mathcal{K}v)(x) = \mathcal{F}^{-1}\left( R_\phi \cdot \mathcal{F}(v) \right)(x) + Wv(x)
+$$
+
+where:
+- $\mathcal{F}$ and $\mathcal{F}^{-1}$ are the Fourier and inverse Fourier transforms
+- $R_\phi$ is a learnable weight tensor in Fourier space (applied as pointwise multiplication)
+- $W$ is a local linear transform (1x1 convolution)
+
+The beauty is that convolution in physical space becomes **pointwise multiplication** in Fourier space:
+
+$$
+\mathcal{F}(f * g) = \mathcal{F}(f) \cdot \mathcal{F}(g)
+$$
+
+This makes global operations efficient — an $O(n^2)$ convolution becomes $O(n \log n)$ via the FFT.
+
+## Architecture Overview
+
+The full FNO architecture stacks multiple Fourier layers:
+
+```python
+import torch
+import torch.nn as nn
+import torch.fft
+
+class SpectralConv2d(nn.Module):
+    """Fourier layer: operates in spectral space."""
+    def __init__(self, in_channels, out_channels, modes1, modes2):
+        super().__init__()
+        self.modes1 = modes1  # Number of Fourier modes to keep
+        self.modes2 = modes2
+        scale = 1 / (in_channels * out_channels)
+        self.weights = nn.Parameter(
+            scale * torch.rand(in_channels, out_channels, modes1, modes2, dtype=torch.cfloat)
+        )
+
+    def forward(self, x):
+        # x shape: (batch, channels, height, width)
+        x_ft = torch.fft.rfft2(x)                    # To Fourier space
+        out_ft = torch.zeros_like(x_ft)
+        # Multiply low-frequency modes by learnable weights
+        out_ft[:, :, :self.modes1, :self.modes2] = \
+            torch.einsum("bixy,ioxy->boxy",
+                         x_ft[:, :, :self.modes1, :self.modes2],
+                         self.weights)
+        return torch.fft.irfft2(out_ft, s=(x.size(-2), x.size(-1)))  # Back to physical space
+```
+
+Each Fourier layer is followed by a nonlinear activation (typically GeLU), and the network begins/ends with pointwise lifting/projection layers.
+
+## Resolution Invariance
+
+One of FNO's most remarkable properties is **resolution invariance** — a model trained on $64 \times 64$ grids can be evaluated on $256 \times 256$ grids without retraining. This is because:
+
+1. The Fourier transform naturally extends to different grid sizes
+2. The learnable parameters $R_\phi$ operate on **modes**, not grid points
+3. Truncating high-frequency modes acts as an implicit regularizer
+
+Formally, if $\mathcal{G}_\theta$ is the learned operator and $P_N$ is a projection onto an $N$-point discretization:
+
+$$
+\|P_N \mathcal{G}_\theta - P_N \mathcal{G}^\dagger\| \to 0 \quad \text{as} \quad N \to \infty
+$$
+
+## Further Reading
+
+- Li et al., "Fourier Neural Operator for Parametric Partial Differential Equations" (2020)
+- Kovachki et al., "Neural Operator: Learning Maps Between Function Spaces" (2023)
+- My work on **Fractal-White-FNO** extends these ideas with multi-scale fractal representations
+
+In future posts, I'll dive deeper into the mathematical foundations and our extensions to this framework.
