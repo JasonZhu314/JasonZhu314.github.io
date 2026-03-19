@@ -13,6 +13,7 @@ out/
 # OS-generated files
 .DS_Store
 Thumbs.db
+bash.exe.stackdump
 
 # TypeScript build info
 *.tsbuildinfo
