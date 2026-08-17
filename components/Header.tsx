@@ -43,7 +43,7 @@ export function Header() {
           href="/"
           className="text-lg font-semibold tracking-tight hover:opacity-70 transition-opacity"
         >
-          Jason Zhu
+          Jason Jitong Zhu
         </Link>
 
         {/* ── Nav links + dark mode toggle ───────────────────────────── */}

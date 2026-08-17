@@ -27,7 +27,7 @@ export default function HomePage() {
       {/* ── Hero section ───────────────────────────────────────────────── */}
       <section>
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">
-          Jason Zhu
+          Jason Jitong Zhu
         </h1>
         <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
           Peking University
@@ -37,18 +37,13 @@ export default function HomePage() {
         <div className="mt-6 max-w-2xl text-gray-700 dark:text-gray-300 leading-relaxed space-y-4">
           <p>
             I am an undergraduate at Peking University working at the
-            intersection of <strong>Artificial Intelligence</strong>,{" "}
-            <strong>Mathematics</strong>, and{" "}
-            <strong>Scientific Machine Learning</strong>. My research focuses
+            intersection of <strong>Artificial Intelligence</strong>, and{" "}
+            <strong>Mathematics</strong>. My research focuses
             on neural operators for partial differential equations, with
-            current work on fractal-informed Fourier Neural Operator
-            architectures and diffusion-based solution operators.
+            current work on learning flow maps of time-dependent PDEs and developing reliable neural operator architectures for autoregressive prediction.
           </p>
           <p>
-            Beyond formal research, I build agentic workflows and explore
-            how modern AI systems can accelerate scientific discovery. This
-            site serves as both an academic portfolio and a digital garden
-            for technical and personal writing.
+            This site serves as both an academic portfolio and a digital garden for technical and personal writing.
           </p>
         </div>
       </section>
